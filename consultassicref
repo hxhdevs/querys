@@ -1,0 +1,15 @@
+--#1# seleccionar todas las rutas diferentes sin repetir por fecha del dia del ultimo mes 
+SELECT DISTINCT s.fk_ruta,s.fechadiadeventa,s.semana,s.fk_cvect,s.numeroguia
+FROM tb_surtimiento s
+JOIN tb_surtimiento_dotaciones d ON s.pk_surtimiento = d.fk_surtimiento
+WHERE fechadiadeventa >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH) AND s.fk_cvect = 330  ORDER BY fechadiadeventa DESC
+
+--#2#  Obtener todos los registros de lecherias,productos etc donde la ruta, fecha, semana y cvect
+SELECT s.pk_surtimiento, s.fechadiadeventa, s.fk_ruta,s.semana, s.fk_cvect,
+	    d.fk_surtimiento, d.fk_dotaciones, d.rotos, d.faltantes, d.sobrantes, d.devoluciones, d.litros, d.importe, d.importeneto, d.fk_precios, d.fk_lecheria
+FROM tb_surtimiento s
+JOIN tb_surtimiento_dotaciones d ON s.pk_surtimiento=d.fk_surtimiento AND d.fecha=s.fechadiadeventa
+WHERE s.fk_ruta = 52 AND d.fecha = '2024-04-08'  AND s.semana=15 AND s.fk_cvect
+ORDER BY d.fk_lecheria, d.fk_producto
+
+para las main view and modal view CRUD operations
