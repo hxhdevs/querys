@@ -13,3 +13,5 @@ WHERE s.fk_ruta = 52 AND d.fecha = '2024-04-08'  AND s.semana=15 AND s.fk_cvect
 ORDER BY d.fk_lecheria, d.fk_producto
 
 para las main view and modal view CRUD operations
+-- ver listado de todas las compras de la lecheria por ordem
+SELECT * FROM tb_surtimiento_dotaciones WHERE fk_lecheria = 0920019900
